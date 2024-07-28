@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: List files in api-service directory
+    - name: List files in api-service/src directory
       run: ls -la ./api-service
 
     - name: Log in to Docker Hub
@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/api-service:latest ./api-service
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/api-service:latest ./api-service/src
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/api-service:latest
